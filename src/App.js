@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect , useState} from 'react';
 import './App.css';
@@ -11,13 +11,6 @@ function App() {
   const movieList = useSelector(state=>state?.movieData)
   const [searchData, setSearchData]= useState('');
 
-  console.log("state", movieList)
-  const movie = {
-    name:"test1",
-    rating:"5",
-    languague:"english"
-  }
-
   useEffect(()=>{
   dispatch(getPopularMoviesList())
   },[])
@@ -29,8 +22,8 @@ function App() {
   return (
     <div className="App">
       <div className="search-bar">
-      Search: <input type="search" onChange={(e)=>setSearchData(e.target.value)} value={searchData}/>
-      <button onClick={handleSearch}>Search</button>
+      Search: <input type="search" id="moviesearch" onChange={(e)=>setSearchData(e.target.value)} value={searchData}/>
+      <button id="search" name="search" onClick={handleSearch}>Search</button>
       </div>
       <Popular movieList={movieList} />
     </div>
